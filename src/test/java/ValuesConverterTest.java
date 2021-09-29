@@ -1,5 +1,5 @@
-import Controller.ValuesConverter;
-import Model.ValuesModel;
+import controller.ValuesConverter;
+import model.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,18 +20,32 @@ public class ValuesConverterTest {
     }
 
     @Test
-    public void Convert() {
-        double result = converter.convert("Ньютоны", 10, "Килоньютоны");
-        assertEquals(10000, result, 0.1);
+    public void convert() {
+        String result = converter.convert("Километр", 1, "Метр");
+        assertEquals("1000.0", result);
+    }
+
+    @Test
+    public void WrongConvert() {
+        String result = converter.convert("Километр", 1, "Пуд");
+        assertEquals("Величины разного типа", result);
     }
 
     @Test
     public void getListOfValuesNames() {
-        List<String> valueNames = converter.getListOfValuesNames("СИ");
+        List<String> valueNames = converter.getListOfValues();
         List<String> trueValues = new ArrayList<>();
-        trueValues.add("Килоньютоны");
-        trueValues.add("Ньютоны");
-        trueValues.add("Микроньютоны");
+        trueValues.add("Километр");
+        trueValues.add("Метр");
+        trueValues.add("Сантиметр");
+        trueValues.add("Дюйм");
+        trueValues.add("Фут");
+        trueValues.add("Ярд");
+        trueValues.add("Аршин");
+        trueValues.add("Верста");
+        trueValues.add("Килограмм");
+        trueValues.add("Пуд");
+        trueValues.add("Унция");
         assertEquals(trueValues, valueNames);
     }
 }

@@ -1,5 +1,5 @@
-import Model.Values;
-import Model.ValuesModel;
+import model.Values;
+import model.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,17 +19,25 @@ public class ValuesModelTest {
 
     @Test
     public void getValue() {
-        double result = model.getValue("Килоньютоны");
+        double result = model.getValue("Километр");
         assertEquals(1000.0, result, 0.1);
     }
 
     @Test
     public void getValuesByNotation() {
-        List<Values> resultList = model.getValuesByNotation("СИ");
+        List<Values> resultList = model.getValues();
         List<Values> trueList = new ArrayList<>();
-        trueList.add(Values.KiloNewtons);
-        trueList.add(Values.Newtons);
-        trueList.add(Values.MicroNewtons);
+        trueList.add(Values.Kilometers);
+        trueList.add(Values.Meters);
+        trueList.add(Values.Centimeters);
+        trueList.add(Values.Inches);
+        trueList.add(Values.Foots);
+        trueList.add(Values.Yards);
+        trueList.add(Values.Arshins);
+        trueList.add(Values.Versts);
+        trueList.add(Values.Kilograms);
+        trueList.add(Values.Poods);
+        trueList.add(Values.Ounces);
         assertEquals(trueList, resultList);
     }
 }

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 
 import org.springframework.stereotype.Component;
@@ -17,10 +17,17 @@ public class ValuesModel {
         return necessaryValue.getScale();
     }
 
-    public List<Values> getValuesByNotation(String notation){
+    public String getNotation(String name){
+        Values necessaryValue = null;
+        for(Values value : Values.values())
+            if (value.getName().equals(name))
+                necessaryValue = value;
+        return necessaryValue.getNotation();
+    }
+
+    public List<Values> getValues(){
         List<Values> notationValues = new ArrayList<>();
         for(Values value : Values.values())
-            if (value.getNotation().equals(notation))
                 notationValues.add(value);
         return notationValues;
     }
