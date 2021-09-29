@@ -1,5 +1,5 @@
-package Controller;
-
+import Controller.ValuesConverter;
+import Model.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,26 +10,28 @@ import static org.junit.Assert.*;
 
 public class ValuesConverterTest {
 
+    ValuesModel model;
     ValuesConverter converter;
 
     @Before
     public void start(){
-        converter = new ValuesConverter();
+        model = new ValuesModel();
+        converter = new ValuesConverter(model);
     }
 
     @Test
     public void Convert() {
-        int result = converter.convert("Ньютоны", 1000, "Килоньютоны");
-        assertEquals(1, result);
+        double result = converter.convert("Ньютоны", 10, "Килоньютоны");
+        assertEquals(10000, result, 0.1);
     }
 
     @Test
     public void getListOfValuesNames() {
         List<String> valueNames = converter.getListOfValuesNames("СИ");
         List<String> trueValues = new ArrayList<>();
+        trueValues.add("Килоньютоны");
         trueValues.add("Ньютоны");
         trueValues.add("Микроньютоны");
-        trueValues.add("Килоньютоны");
         assertEquals(trueValues, valueNames);
     }
 }

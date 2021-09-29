@@ -1,5 +1,5 @@
-package Model;
-
+import Model.Values;
+import Model.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,14 +19,14 @@ public class ValuesModelTest {
 
     @Test
     public void getValue() {
-        int result = model.getValue("Килоньютоны");
-        assertEquals(1000, result);
+        double result = model.getValue("Килоньютоны");
+        assertEquals(1000.0, result, 0.1);
     }
 
     @Test
     public void getValuesByNotation() {
-        List<Enum<Values>> resultList = model.getValuesByNotation("СИ");
-        List<Enum<Values>> trueList = new ArrayList<>();
+        List<Values> resultList = model.getValuesByNotation("СИ");
+        List<Values> trueList = new ArrayList<>();
         trueList.add(Values.KiloNewtons);
         trueList.add(Values.Newtons);
         trueList.add(Values.MicroNewtons);

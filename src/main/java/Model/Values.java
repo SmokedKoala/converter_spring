@@ -1,9 +1,9 @@
 package Model;
 
 public enum Values {
+    KiloNewtons("СИ","Килоньютоны",1000),
     Newtons("СИ", "Ньютоны", 1),
-    MicroNewtons("СИ", "Микроньютоны", 0.000001),
-    KiloNewtons("СИ","Килоньютоны",1000);
+    MicroNewtons("СИ", "Микроньютоны", 0.000001);
 
     private String notation;
     private String name;
