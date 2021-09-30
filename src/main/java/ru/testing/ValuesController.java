@@ -16,7 +16,7 @@ public class ValuesController {
         this.converter = converter;
         converter.setValue1("Kilometer");
         converter.setValue2("Meter");
-        converter.setValueAmountValue1(10);
+        converter.setValueAmountValue1("10");
     }
 
     @GetMapping("/valueConverter")
@@ -30,7 +30,7 @@ public class ValuesController {
     }
 
     @PostMapping("/valueConverter")
-    public String convert(@RequestParam("first") String value1,@RequestParam("amount") double amount,
+    public String convert(@RequestParam("first") String value1,@RequestParam("amount") String amount,
                           @RequestParam("second") String value2) {
         converter.setValueAmountValue1(amount);
         converter.setValue2(value2);

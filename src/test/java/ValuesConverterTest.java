@@ -23,18 +23,36 @@ public class ValuesConverterTest {
     public void convert() {
         converter.setValue1("Kilometer");
         converter.setValue2("Meter");
-        converter.setValueAmountValue1(1);
+        converter.setValueAmountValue1("1");
         String result = converter.convert();
         assertEquals("1000.0", result);
     }
 
     @Test
-    public void WrongConvert() {
+    public void differentTypesConvert() {
         converter.setValue1("Kilometer");
         converter.setValue2("Pood");
-        converter.setValueAmountValue1(1);
+        converter.setValueAmountValue1("1");
         String result = converter.convert();
         assertEquals("Different type values", result);
+    }
+
+    @Test
+    public void wrongAmountConvert() {
+        converter.setValue1("Kilometer");
+        converter.setValue2("Kilometer");
+        converter.setValueAmountValue1("-1");
+        String result = converter.convert();
+        assertEquals("Incorrect amount", result);
+    }
+
+    @Test
+    public void incorrectAmountConvert() {
+        converter.setValue1("Kilometer");
+        converter.setValue2("Kilometer");
+        converter.setValueAmountValue1("sdf sf");
+        String result = converter.convert();
+        assertEquals("Amount should be number", result);
     }
 
     @Test

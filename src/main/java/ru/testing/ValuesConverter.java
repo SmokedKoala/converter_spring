@@ -12,7 +12,7 @@ public class ValuesConverter {
 
     final ValuesModel model;
     String value1;
-    double valueAmountValue1;
+    String valueAmountValue1;
     String value2;
 
     @Autowired
@@ -28,11 +28,11 @@ public class ValuesConverter {
         this.value1 = value1;
     }
 
-    public double getValueAmountValue1() {
+    public String getValueAmountValue1() {
         return valueAmountValue1;
     }
 
-    public void setValueAmountValue1(double valueAmountValue1) {
+    public void setValueAmountValue1(String valueAmountValue1) {
         this.valueAmountValue1 = valueAmountValue1;
     }
 
@@ -45,12 +45,19 @@ public class ValuesConverter {
     }
 
     public String convert(){
-        if (model.getNotation(value1).equals(model.getNotation(value2))) {
-            double firstValueScale = model.getValue(value1);
-            double secondValueScale = model.getValue(value2);
-            return String.valueOf(firstValueScale / secondValueScale * valueAmountValue1);
+        try {
+            if (Double.valueOf(valueAmountValue1) <0)
+                return "Incorrect amount";
+            if (model.getNotation(value1).equals(model.getNotation(value2))) {
+                double firstValueScale = model.getValue(value1);
+                double secondValueScale = model.getValue(value2);
+                return String.valueOf(firstValueScale / secondValueScale * Double.valueOf(valueAmountValue1));
+            }
+            return "Different type values";
+        } catch (NumberFormatException e){
+            return "Amount should be number";
         }
-        return "Different type values";
+
     }
 
     public List<String> getListOfValues(){
