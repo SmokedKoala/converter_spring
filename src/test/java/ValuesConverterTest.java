@@ -1,5 +1,5 @@
-import controller.ValuesConverter;
-import model.ValuesModel;
+import ru.testing.ValuesConverter;
+import ru.testing.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,31 +21,37 @@ public class ValuesConverterTest {
 
     @Test
     public void convert() {
-        String result = converter.convert("Километр", 1, "Метр");
+        converter.setValue1("Kilometer");
+        converter.setValue2("Meter");
+        converter.setValueAmountValue1(1);
+        String result = converter.convert();
         assertEquals("1000.0", result);
     }
 
     @Test
     public void WrongConvert() {
-        String result = converter.convert("Километр", 1, "Пуд");
-        assertEquals("Величины разного типа", result);
+        converter.setValue1("Kilometer");
+        converter.setValue2("Pood");
+        converter.setValueAmountValue1(1);
+        String result = converter.convert();
+        assertEquals("Different type values", result);
     }
 
     @Test
     public void getListOfValuesNames() {
         List<String> valueNames = converter.getListOfValues();
         List<String> trueValues = new ArrayList<>();
-        trueValues.add("Километр");
-        trueValues.add("Метр");
-        trueValues.add("Сантиметр");
-        trueValues.add("Дюйм");
-        trueValues.add("Фут");
-        trueValues.add("Ярд");
-        trueValues.add("Аршин");
-        trueValues.add("Верста");
-        trueValues.add("Килограмм");
-        trueValues.add("Пуд");
-        trueValues.add("Унция");
+        trueValues.add("Kilometer");
+        trueValues.add("Meter");
+        trueValues.add("Centimeter");
+        trueValues.add("Inch");
+        trueValues.add("Foot");
+        trueValues.add("Yard");
+        trueValues.add("Arshin");
+        trueValues.add("Verst");
+        trueValues.add("Kilogram");
+        trueValues.add("Pood");
+        trueValues.add("Ounce");
         assertEquals(trueValues, valueNames);
     }
 }

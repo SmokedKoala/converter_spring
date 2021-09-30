@@ -1,7 +1,8 @@
-package model;
+package ru.testing;
 
 
 import org.springframework.stereotype.Component;
+import ru.testing.Values;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+
+<body>
+<form role="form" id="sendData" th:action=@{/valueConverter} th:method="post">
+
+    <select name="first">
+        <option th:each="value: ${values}" th:text="${value}" th:selected="${value==first}"></option>
+    </select>
+
+    <select name="second">
+        <option th:each="value: ${values}" th:text="${value}" th:selected="${value==second}"></option>
+    </select>
+
+    <label for="name-label">Enter amount: </label>
+    <input type="text" id="name-label" name="amount">
+
+    <input type="submit" value="Convert"/>
+</form>
+Result:
+<h1 th:text="${result}">Результат</h1>
+</body>
+</html>

@@ -1,5 +1,5 @@
-import model.Values;
-import model.ValuesModel;
+import ru.testing.Values;
+import ru.testing.ValuesModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class ValuesModelTest {
 
     @Test
     public void getValue() {
-        double result = model.getValue("Километр");
+        double result = model.getValue("Kilometer");
         assertEquals(1000.0, result, 0.1);
     }
 
