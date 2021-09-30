@@ -59,13 +59,4 @@ public class ValuesConverter {
         return valuesNames;
     }
 
-    @Override
-    public String toString() {
-        return "ValuesConverter{" +
-                "model=" + model +
-                ", value1='" + value1 + '\'' +
-                ", valueAmountValue1=" + valueAmountValue1 +
-                ", value2='" + value2 + '\'' +
-                '}';
-    }
 }
